@@ -3,8 +3,8 @@ import { compose } from 'redux'
 import injectSheet from 'react-jss'
 import { connect } from 'react-redux'
 import classNames from 'classnames'
-import { isFavouritedSelector } from '../selectors'
-import { toggleFavouriteActionCreator } from '../actions'
+import { isFavoritedSelector } from '../selectors'
+import { setFavouriteActionCreator } from '../actions'
 import theme from '../style/theme'
 import facebookIcon from '../icons/facebook.svg'
 import twitterIcon from '../icons/twitter.svg'
@@ -54,15 +54,15 @@ const ShareButtons = ({ children, classes, className, url, title, isFavourited, 
 
 function mapStateToProps (state, { id }) {
   return {
-    isFavourited: isFavouritedSelector(state, id)
+    isFavourited: isFavoritedSelector(state, id)
   }
 }
 
-function mapDispatchToProps (dispatch, { id }) {
-  return {
-    toggleFavourited: () => dispatch(toggleFavouriteActionCreator(id))
+const mapDispatchToProps = (dispatch, id) => ({
+  toggleFavourited: () => {
+    dispatch(setFavouriteActionCreator(id))
   }
-}
+})
 
 const em = px => round(px / 16) + 'em'
 
