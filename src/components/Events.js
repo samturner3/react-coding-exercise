@@ -14,7 +14,12 @@ const Events = ({ classes, ready, events }) => (
       <Icon className={classes.titleIcon} symbol={titleIcon} />
       Results{ready && `: ${events.length} events found`}
     </h3>
-    {!ready && <p>Loading...</p>}
+    {!ready &&
+      <div className={classes.loaderIconContainer}>
+        <img src='/vividIconLoader.gif' alt='Vivid Logo Icon Loader' />
+        <h2>Loading ...</h2>
+      </div>
+    }
     {ready && (
       <div className={classes.tilesWrapper}>
         <div className={classes.tiles}>
@@ -73,6 +78,10 @@ export default compose(
       '@media (min-width: 1200px)': {
         width: `calc(${100 / 3}% - ${theme.gutter}px)`
       }
+    },
+    loaderIconContainer: {
+      display: 'grid',
+      justifyItems: 'center'
     }
   })
 )(Events)
