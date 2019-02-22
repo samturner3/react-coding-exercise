@@ -12,7 +12,7 @@ const Events = ({ classes, ready, events }) => (
   <div className={classes.container}>
     <h3 className={classes.title}>
       <Icon className={classes.titleIcon} symbol={titleIcon} />
-      Results
+      Results{ready && `: ${events.length} events found`}
     </h3>
     {!ready && <p>Loading...</p>}
     {ready && (
