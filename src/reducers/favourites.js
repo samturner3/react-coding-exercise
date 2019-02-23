@@ -43,7 +43,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         busy: false,
         error: undefined,
-        favourites: [...state.favourites, state.favouriteToToggle],
+        favourites: action.payload,
         favouriteToToggle: null
       }
     case `${TOGGLE_FAVOURITE}_${ActionType.Rejected}`:
